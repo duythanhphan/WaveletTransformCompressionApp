@@ -9,7 +9,12 @@
 
 #include "WaveletCompressor.h"
 
-int main(int argc, char* argv) {
+int main(int argc, char* argv[]) {
+
+	WaveletCompressor compressor;
+	compressor.init("input.png", "output");
+	compressor.compress(WaveletCompressor::Haar);
+
 	return 0;
 }
 
