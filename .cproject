@@ -109,6 +109,10 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.release.122968865.826790232" name="settings.ini" rcbsApplicability="disable" resourcePath="settings.ini" toolsToInvoke=""/>
+					<sourceEntries>
+						<entry excluding="settings.ini" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>

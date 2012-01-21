@@ -7,9 +7,12 @@
 
 #include <cstdio>
 #include <cstring>
+#include <fstream>
 
 #include "WaveletCompressor.h"
 #include "WaveletDecompressor.h"
+
+using namespace std;
 
 enum Mode {
 	NotSet,
@@ -44,10 +47,34 @@ char* getNextArg(int pos, int argc, char* argv[]) {
 	return argv[pos + 1];
 }
 
+void loadCompressorSettings(WaveletCompressor* pCompressor) {
+	ifstream settings("../settings.ini");
+	if(!settings.good()) {
+		return;
+	}
+
+	unsigned int quantizerIntervals[3] = {8192, 8192, 8192};
+	const char* quantizerOptionNames[] = {"QuantizerIntervalsY:", "QuantizerIntervalsU:", "QuantizerIntervalsV:"};
+	char setting[256];
+	char* optionName = 0;
+	char* optionValue = 0;
+
+	for(int i = 0; i < 3; ++i) {
+		settings.getline(setting, 256);
+		optionName = strtok(setting, " ");
+		optionValue = strtok(NULL, " ");
+		if(strcmp(optionName, quantizerOptionNames[i]) == 0) {
+			quantizerIntervals[i] = atoi(optionValue);
+		}
+	}
+	pCompressor->setQuantizationIntervalsY(quantizerIntervals[0], quantizerIntervals[1], quantizerIntervals[2]);
+}
+
 bool compress(const char* inputFilename, const char* outputFilename, WaveletCompressor::WaveletType waveletType) {
 	printf("compressing...\n");
 
 	WaveletCompressor compressor;
+	loadCompressorSettings(&compressor);
 	if(!compressor.init(inputFilename, outputFilename)) {
 		return false;
 	}
