@@ -25,6 +25,7 @@ void printHelp() {
 	printf("-d Decompress\n");
 	printf("-Wavelet (wavelet_type)\n");
 	printf("\t Haar\n");
+	printf("\t D4\n");
 	printf("-Input inputFile - for compression or decompression\n");
 	printf("-Output outputFile - for compression or decompression\n");
 }
@@ -145,6 +146,8 @@ int main(int argc, char* argv[]) {
 		char* waveletStr = getNextArg(argPos, argc, argv);
 		if(strcmp("Haar", waveletStr) == 0) {
 			waveletType = WaveletCompressor::Haar;
+		} else if(strcmp("D4", waveletStr) == 0) {
+			waveletType = WaveletCompressor::D4;
 		}
 	}
 
