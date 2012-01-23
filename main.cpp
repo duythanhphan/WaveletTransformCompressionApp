@@ -54,7 +54,7 @@ void loadCompressorSettings(WaveletCompressor* pCompressor) {
 		return;
 	}
 
-	unsigned int quantizerIntervals[3] = {8192, 8192, 8192};
+	double quantizerIntervals[3] = {16.0, 16.0, 16.0};
 	const char* quantizerOptionNames[] = {"QuantizerIntervalsY:", "QuantizerIntervalsU:", "QuantizerIntervalsV:"};
 	char setting[256];
 	char* optionName = 0;
@@ -65,7 +65,7 @@ void loadCompressorSettings(WaveletCompressor* pCompressor) {
 		optionName = strtok(setting, " ");
 		optionValue = strtok(NULL, " ");
 		if(strcmp(optionName, quantizerOptionNames[i]) == 0) {
-			quantizerIntervals[i] = atoi(optionValue);
+			quantizerIntervals[i] = (double)atof(optionValue);
 		}
 	}
 	pCompressor->setQuantizationIntervalsY(quantizerIntervals[0], quantizerIntervals[1], quantizerIntervals[2]);
