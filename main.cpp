@@ -55,7 +55,7 @@ void loadCompressorSettings(WaveletCompressor* pCompressor) {
 	}
 
 	double quantizerIntervals[3] = {16.0, 16.0, 16.0};
-	const char* quantizerOptionNames[] = {"QuantizerIntervalsY:", "QuantizerIntervalsU:", "QuantizerIntervalsV:"};
+	const char* quantizerOptionNames[] = {"QuantizerY:", "QuantizerU:", "QuantizerV:"};
 	char setting[256];
 	char* optionName = 0;
 	char* optionValue = 0;
