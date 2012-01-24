@@ -146,6 +146,8 @@ int main(int argc, char* argv[]) {
 		char* waveletStr = getNextArg(argPos, argc, argv);
 		if(strcmp("Haar", waveletStr) == 0) {
 			waveletType = WaveletCompressor::Haar;
+		} else if(strcmp("CDF97", waveletStr) == 0) {
+			waveletType = WaveletCompressor::CDF97;
 		} else if(strcmp("D4", waveletStr) == 0) {
 			waveletType = WaveletCompressor::D4;
 		}
